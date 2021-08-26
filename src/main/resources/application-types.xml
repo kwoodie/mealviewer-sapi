@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="School" format="xml">
+      <types:example format="xml" element="{http://schemas.datacontract.org/2004/07/MealViewerAPI.Models.Version4}School" location="examples/school.xml"/>
+    </types:type>
+    <types:type name="Menu" format="xml">
+      <types:example format="xml" element="{http://schemas.datacontract.org/2004/07/MealViewerAPI.Models.Version4}MenuBlock" location="examples/Menu.xml"/>
+    </types:type>
+    <types:type name="ListOfSchools" format="xml">
+      <types:example format="xml" element="{http://schemas.datacontract.org/2004/07/MealViewerAPI.Models.Version4}PhysicalLocationList" location="examples/schoolList.xml"/>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#e8ed8082-2da5-4892-bde5-5f9406efad08">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="School"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#588db753-e645-4364-90e2-5f44ed20e06f">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="School"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#f6100471-209a-4bbe-ab7c-11587240347e">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="ListOfSchools"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

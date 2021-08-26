@@ -1,0 +1,67 @@
+#%RAML 1.0
+types:
+  Menu:
+    properties:
+      menuDate:
+        example: 2021-08-25
+        type: date-only
+      LunchMenu:
+        items:
+          example: Pizza
+          type: string
+      BreakfastMenu:
+        items:
+          example: Sausage Biscuit
+          type: string
+  School:
+    properties:
+      school_name:
+        example: Example
+        type: string
+      school_address:
+        example: Example
+        type: string
+      school_lookup_name:
+        example: Example
+        type: string
+      school_:
+        example: Example
+        type: string
+title: MealViewer System API
+baseUri: http://localhost:8080/v1
+description: This system api will connect to the MealViewer API hosted on the internet and retrieve school lunch menu information for the provided school.
+mediaType:
+  - application/json
+version: "1.0"
+protocols:
+  - HTTP
+/menu/{schoolName}/{fromDate}/{toDate}:
+  get:
+    displayName: Menu
+    description: School Menu provided by the meal viewer website for wake county.
+    responses:
+      "200":
+        body:
+          items:
+            type: Menu
+    securedBy: []
+  uriParameters:
+    schoolName:
+      description: School Name as configured in the MealViewer API specification
+      example: Example
+      type: string
+    fromDate:
+      example: 2021-08-25
+      type: date-only
+    toDate:
+      example: 2021-08-25
+      type: date-only
+/school:
+  get:
+    displayName: School
+    description: This resource returns a list of schools available for lunch/breakfast lookup.
+    responses:
+      "200":
+        body:
+          items:
+            type: School
